@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class TouchControl : MonoBehaviour, IBeginDragHandler , IDragHandler , IDropHandler  {
-
-	public Camera camera;
+public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
+	private Vector3 startPoint;
+	public float maxRadius;
 
 	[System.Serializable]
 	public class PassVector : UnityEvent<Vector3>{};
@@ -19,17 +19,26 @@ public class TouchControl : MonoBehaviour, IBeginDragHandler , IDragHandler , ID
 	[SerializeField]
 	private UnityEvent onUp;
 	
-
+	void Awake(){
+		startPoint=GetComponentInParent<Transform>().position;
+	}
 	
-	public void OnBeginDrag(PointerEventData eventData) {
-		this.onDown.Invoke(camera.ScreenToWorldPoint( (Vector3)eventData.position)); 
-	}
 	public void OnDrag(PointerEventData eventData) {
-		this.onDrag.Invoke(camera.ScreenToWorldPoint( (Vector3)eventData.position)); 
-	}
-	public void OnDrop(PointerEventData eventData) {
-		this.onUp.Invoke(); 
-	}
+		Vector3 pos = Camera.main.ScreenToWorldPoint( (Vector3)eventData.position) + Vector3.forward*10;
+		float radius = (pos - startPoint).magnitude;
 
+		if(radius > maxRadius)
+		{
+			this.transform.position = startPoint + (pos - startPoint)*maxRadius/radius;
+		}	
+		else	
+			this.onDrag.Invoke(pos); 
+		//Debug.Log(camera.ScreenToWorldPoint( (Vector3)eventData.position));
+	}
+	public void OnEndDrag(PointerEventData eventData) {
+		this.onUp.Invoke();
+		//Debug.Log("3");
+ 
+	}
 	
 }
