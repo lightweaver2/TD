@@ -37,6 +37,7 @@ public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
 	}
 	public void OnEndDrag(PointerEventData eventData) {
 		this.onUp.Invoke();
+		this.enabled=false;
 		//Debug.Log("3");
  
 	}

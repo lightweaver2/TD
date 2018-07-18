@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class BallView : MonoBehaviour {
 
-	private float countDown;
-	
+	private BallModel ballModel;
+	private CannonManager cannon;
 	private Vector3 startPoint;
 	private Rigidbody2D rb2d;
-	public float speed;
+	
 
 	void Awake(){
+		ballModel=GetComponent<BallModel>();
+		cannon = GetComponentInParent<CannonManager>();
 		startPoint=GetComponentInParent<Transform>().position;
 		this.transform.position=startPoint;
 		rb2d=this.GetComponent<Rigidbody2D>();
 	} 
 
-	void UpDate(){
-		if(countDown>0)
-		{
-			countDown-=Time.deltaTime;
-		}
-	}
-
+	
 	public void Shoot(){
-		this.rb2d.velocity = (startPoint-this.transform.position)*speed;
-		countDown
+		this.rb2d.velocity = (startPoint-this.transform.position).normalized*ballModel.speed;
+		cannon.Create();
 	}
 	
 }
