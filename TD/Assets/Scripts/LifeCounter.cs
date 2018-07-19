@@ -5,12 +5,26 @@ using UnityEngine;
 public class LifeCounter : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		
+	public UIManager uiManager;
+	public int life;
+
+
+	void Awake(){
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void Start(){
+		uiManager.setLife(life);
+	}
+
+	void OnTriggerEnter2D(Collider2D other ){
+		if(other.gameObject.CompareTag("Enemy"))
+		{
+			ChangeLife(-1);
+		}
+	}
+
+	void ChangeLife(int num){
+		life+=num;
+		uiManager.setLife(life);
 	}
 }

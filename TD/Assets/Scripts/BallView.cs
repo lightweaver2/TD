@@ -8,6 +8,7 @@ public class BallView : MonoBehaviour {
 	private CannonManager cannon;
 	private Vector3 startPoint;
 	private Rigidbody2D rb2d;
+	private CircleCollider2D cc2d;
 	
 
 	void Awake(){
@@ -16,11 +17,15 @@ public class BallView : MonoBehaviour {
 		startPoint=GetComponentInParent<Transform>().position;
 		this.transform.position=startPoint;
 		rb2d=this.GetComponent<Rigidbody2D>();
+		cc2d=this.GetComponent<CircleCollider2D>();
 	} 
+	void Start(){
+	}
 
 	
 	public void Shoot(){
-		this.rb2d.velocity = (startPoint-this.transform.position).normalized*ballModel.speed;
+		this.gameObject.layer=8;
+		rb2d.velocity = (startPoint-this.transform.position).normalized*ballModel.speed;
 		cannon.Create();
 	}
 	
