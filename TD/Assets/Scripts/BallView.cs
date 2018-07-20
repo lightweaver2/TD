@@ -20,13 +20,15 @@ public class BallView : MonoBehaviour {
 		cc2d=this.GetComponent<CircleCollider2D>();
 	} 
 	void Start(){
+
 	}
 
 	
 	public void Shoot(){
 		this.gameObject.layer=8;
 		rb2d.velocity = (startPoint-this.transform.position).normalized*ballModel.speed;
-		cannon.Create();
+		this.transform.parent=null;
+		cannon.Create(ballModel.BallCD);//create new ball for next shoot
 	}
 	
 }

@@ -13,7 +13,7 @@ public class LifeCounter : MonoBehaviour {
 
 	}
 	void Start(){
-		uiManager.setLife(life);
+		uiManager.SetLife(life);
 	}
 
 	void OnTriggerEnter2D(Collider2D other ){
@@ -25,6 +25,6 @@ public class LifeCounter : MonoBehaviour {
 
 	void ChangeLife(int num){
 		life+=num;
-		uiManager.setLife(life);
+		uiManager.SetLife(life);
 	}
 }
