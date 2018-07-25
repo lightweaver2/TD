@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour {
 	public Text energy;
 	public Image energyBar;
 	void Awake () {
+		//life.color=Color.white;
 	}
 	
 	// Update is called once per frame
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void SetLife(int num){
+		//Debug.Log (life.color);
 		life.text="Life :" + num;
 	}
 }

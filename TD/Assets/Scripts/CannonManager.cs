@@ -54,8 +54,11 @@ public class CannonManager : MonoBehaviour {
 	}
 
 	 public void ChangeBall(int num){
-		Destroy(this.transform.GetChild(0).gameObject);
-		Create(0f);
+		if(this.transform.childCount>0)
+		{
+			Destroy(this.transform.GetChild(0).gameObject);
+			Create(0f);
+		}
 		type=num;
 	 }
 

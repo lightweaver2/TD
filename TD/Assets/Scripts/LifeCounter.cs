@@ -16,11 +16,13 @@ public class LifeCounter : MonoBehaviour {
 		uiManager.SetLife(life);
 	}
 
-	void OnTriggerEnter2D(Collider2D other ){
+	void OnTriggerExit2D(Collider2D other ){
 		if(other.gameObject.CompareTag("Enemy"))
 		{
 			ChangeLife(-1);
+			Destroy(other.gameObject);
 		}
+		
 	}
 
 	void ChangeLife(int num){
