@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964649149385798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.895, y: -1.895, z: 0}
-  m_LocalScale: {x: 1.1700838, y: 1.1700838, z: 1.1700838}
+  m_LocalPosition: {x: -1.895, y: -1.7206, z: 0}
+  m_LocalScale: {x: 1.1700838, y: 0.82142955, z: 1.1700838}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,8 +56,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.2
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: b2522cbd81ef442d5b8983cc00c45244, type: 2}
   m_Interpolate: 0
@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4637b01c58124972a80e4bb2493fa4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   speedRecoverConst: 1
-  rotRecoverConst: 2
+  rotRecoverConst: 1
   hp: 500
   atk: 50
 --- !u!114 &114186411015035212

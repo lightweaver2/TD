@@ -22,12 +22,16 @@ public class EnemyView : MonoBehaviour {
 	}
 
 	void Update(){
-		if(rb2d.velocity.y >= initVelocity.y)
-			rb2d.AddForce(new Vector2(0f,-1f).normalized * enemyModel.speedRecoverConst );
 		if(this.transform.rotation.z>0f)
+		{
 			rb2d.AddTorque(-enemyModel.rotRecoverConst);
+		}
 		else if (this.transform.rotation.z<0f)
 			rb2d.AddTorque(enemyModel.rotRecoverConst);
+		
+		if(rb2d.velocity.y >= initVelocity.y)
+			rb2d.AddForce(new Vector2(0f,-1f).normalized * enemyModel.speedRecoverConst );
+		
 
 
 	}
