@@ -5,9 +5,11 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
+	public UIManager uiManager;
+	public float maxRadius;
+
 	private CannonManager cannonManager;
 	private Vector3 startPoint;
-	public float maxRadius;
 	[SerializeField]
 	private UnityEvent onUp;
 	
@@ -18,8 +20,10 @@ public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
 	
 	public void OnDrag(PointerEventData eventData) {
 		if(cannonManager.energy < cannonManager.ballList[cannonManager.type].energyPerBall)
+		{
+			
 			return;
-
+		}
 		Vector3 pos = Camera.main.ScreenToWorldPoint( (Vector3)eventData.position) + Vector3.forward*10;
 		float radius = (pos - startPoint).magnitude;
 

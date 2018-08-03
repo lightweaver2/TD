@@ -15,7 +15,6 @@ public class CannonManager : MonoBehaviour {
 	public float maxEnergy;
 	public float energyRegePerSec; //regeneration rate
 	public float energy;
-
 	public int type;	//type of ball
 
 	// Use this for initialization
@@ -57,7 +56,7 @@ public class CannonManager : MonoBehaviour {
 		if(this.transform.childCount>0)
 		{
 			Destroy(this.transform.GetChild(0).gameObject);
-			Create(0f);
+			NewBall();
 		}
 		type=num;
 	 }
