@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
-	public UIManager uiManager;
-	public float maxRadius;
+public class TouchControl : MonoBehaviour{
+	/*public float maxRadius;
 
 	private CannonManager cannonManager;
 	private Vector3 startPoint;
@@ -14,14 +13,14 @@ public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
 	private UnityEvent onUp;
 	
 	void Awake(){
-		startPoint=GetComponentInParent<Transform>().position;
+		startPoint=this.transform.parent.position;
 		cannonManager=GetComponentInParent<CannonManager>();
 	}
 	
 	public void OnDrag(PointerEventData eventData) {
 		if(cannonManager.energy < cannonManager.ballList[cannonManager.type].energyPerBall)
 		{
-			
+			//cannonManager.NotEnoughEnergy();
 			return;
 		}
 		Vector3 pos = Camera.main.ScreenToWorldPoint( (Vector3)eventData.position) + Vector3.forward*10;
@@ -42,6 +41,8 @@ public class TouchControl : MonoBehaviour, IDragHandler , IEndDragHandler  {
 		this.enabled=false;
 		//Debug.Log("3");
  
-	}
+	}*/
+
+	
 	
 }

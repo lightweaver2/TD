@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 50947521524067370}
   - component: {fileID: 58789344381930004}
   - component: {fileID: 212408044309718296}
-  - component: {fileID: 114740998488353388}
   - component: {fileID: 114246332789729470}
   - component: {fileID: 114392739490347700}
   m_Layer: 10
@@ -105,34 +104,6 @@ MonoBehaviour:
   BallCD: 1
   speed: 5
   atk: 200
---- !u!114 &114740998488353388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256137757035342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd27482936a3141d49cdbcd0187da831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRadius: 1.3
-  onUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114246332789729470}
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212408044309718296
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,10 +7,12 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
-	public Text life;
-	public Text energy;
+	public Text lifeText;
+	public Text energyText;
 	public Text energyWarning;
+
 	public Image energyBar;
+	public Text deadText;
 	void Awake () {
 		//life.color=Color.white;
 	}
@@ -21,20 +23,25 @@ public class UIManager : MonoBehaviour {
 	}
 	public void SetEnergyBar(float cur,float max){
 		energyBar.fillAmount = cur/max;	
-		energy.text= cur + "/" + max;
+		energyText.text= cur + "/" + max;
 	}
 
 	public void SetLife(int num){
 		//Debug.Log (life.color);
-		life.text="Life :" + num;
+		lifeText.text="Life :" + num;
+		if(num==0)
+			deadText.enabled=true;
 	}
 
 	public void NotEnoughEnergy(){
-		for(int i=0;i<6;i++)
-			Invoke("Blink",0.5f);
+		InvokeRepeating("Blink",0f,0.5f);
+		Invoke("CancelBlink",3f);
 	}
 	void Blink(){
 		energyWarning.enabled=!energyWarning.enabled;
+	}
+	void CancelBlink(){
+		CancelInvoke();
 	}
 
 }
