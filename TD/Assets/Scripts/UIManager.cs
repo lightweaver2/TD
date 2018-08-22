@@ -18,9 +18,7 @@ public class UIManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	public void SetEnergyBar(float cur,float max){
 		energyBar.fillAmount = cur/max;	
 		energyText.text= cur + "/" + max;

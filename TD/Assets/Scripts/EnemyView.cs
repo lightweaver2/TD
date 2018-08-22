@@ -8,11 +8,13 @@ public class EnemyView : MonoBehaviour {
 	private Vector2 initVelocity;
 	private EnemyModel enemyModel;	
 	private Rigidbody2D rb2d;
+	private PolygonCollider2D poly2D;
 	private SpriteRenderer sprite;
 	void Awake(){
 		enemyModel=GetComponent<EnemyModel>();
 		rb2d=GetComponent<Rigidbody2D>();
 		sprite=GetComponent<SpriteRenderer>();
+		poly2D=GetComponent<PolygonCollider2D>();
 	}
 
 	void Start(){
@@ -22,12 +24,18 @@ public class EnemyView : MonoBehaviour {
 	}
 
 	void Update(){
-		if(this.transform.rotation.z>0f)
+		if(this.transform.rotation.z> 3f*Mathf.Deg2Rad)
 		{
+			//this.transform.eulerAngles -= new Vector3(0f,0f,Time.deltaTime*enemyModel.rotRecoverConst);
 			rb2d.AddTorque(-enemyModel.rotRecoverConst);
+
 		}
-		else if (this.transform.rotation.z<0f)
+		else if (this.transform.rotation.z<-3f*Mathf.Deg2Rad)
+		{			
+			//this.transform.eulerAngles += new Vector3(0f,0f,Time.deltaTime*enemyModel.rotRecoverConst);
 			rb2d.AddTorque(enemyModel.rotRecoverConst);
+
+		}
 		
 		if(rb2d.velocity.y >= initVelocity.y)
 			rb2d.AddForce(new Vector2(0f,-1f).normalized * enemyModel.speedRecoverConst );
@@ -57,6 +65,7 @@ public class EnemyView : MonoBehaviour {
 
 	IEnumerator Explode(){
 		rb2d.velocity= Vector2.zero;
+		poly2D.enabled=false;
 		sprite.DOColor(Color.black,1f);
 		yield return new WaitForSeconds(1);
 		Destroy(this.gameObject);

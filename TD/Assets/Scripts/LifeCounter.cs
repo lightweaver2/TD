@@ -27,6 +27,8 @@ public class LifeCounter : MonoBehaviour {
 
 	void ChangeLife(int num){
 		life+=num;
+		if(life<0)
+			life=0;
 		uiManager.SetLife(life);
 	}
 }
