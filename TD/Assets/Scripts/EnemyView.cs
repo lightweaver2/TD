@@ -24,13 +24,13 @@ public class EnemyView : MonoBehaviour {
 	}
 
 	void Update(){
-		if(this.transform.rotation.z> 3f*Mathf.Deg2Rad)
+		if(this.transform.rotation.z> 1f*Mathf.Deg2Rad)
 		{
 			//this.transform.eulerAngles -= new Vector3(0f,0f,Time.deltaTime*enemyModel.rotRecoverConst);
 			rb2d.AddTorque(-enemyModel.rotRecoverConst);
 
 		}
-		else if (this.transform.rotation.z<-3f*Mathf.Deg2Rad)
+		else if (this.transform.rotation.z<-1f*Mathf.Deg2Rad)
 		{			
 			//this.transform.eulerAngles += new Vector3(0f,0f,Time.deltaTime*enemyModel.rotRecoverConst);
 			rb2d.AddTorque(enemyModel.rotRecoverConst);
